@@ -1,9 +1,20 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\AdminController;
+
+Route::get('/debug', function () {
+    try {
+        $tables = DB::select("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'");
+        $tableNames = array_map(function($t) { return $t->table_name; }, $tables);
+        return "Database connected! Tables: " . implode(", ", $tableNames);
+    } catch (Exception $e) {
+        return "DB Error: " . $e->getMessage();
+    }
+});
 
 Route::get('/', [FrontendController::class, 'index'])->name('home');
 Route::get('/posts', [FrontendController::class, 'posts'])->name('posts');
