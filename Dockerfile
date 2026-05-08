@@ -19,6 +19,10 @@ COPY . .
 
 RUN composer install --no-dev --optimize-autoloader
 
+RUN php artisan migrate --force
+
+RUN php artisan db:seed --force
+
 EXPOSE 8000
 
 CMD php artisan serve --host 0.0.0.0 --port $PORT
