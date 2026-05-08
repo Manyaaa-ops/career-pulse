@@ -18,6 +18,8 @@ WORKDIR /app
 
 COPY . .
 
+RUN cp .env.example .env
+
 RUN composer install --no-dev --optimize-autoloader
 
 RUN php artisan key:generate
