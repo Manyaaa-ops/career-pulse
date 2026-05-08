@@ -7,11 +7,11 @@ services:
       - key: APP_ENV
         value: production
       - key: APP_DEBUG
-        value: false
+        value: "true"
       - key: APP_KEY
-        generateValue: true
+        value: "base64:+jiyBsVifghmyDiQMy/3goQmcuJamoX+jeI6PofD5Uo="
       - key: DB_CONNECTION
-        value: mysql
+        value: pgsql
       - key: DB_HOST
         fromDb: career-pulse-db
       - key: DB_PORT
