@@ -1,150 +1,195 @@
-# Career Pulse
+# Career Pulse - Career Update Portal
 
-A full-stack Blog / Career Update Portal built with Laravel 12.
+A full-stack career update portal built with Laravel 12, featuring a premium dark theme with glassmorphism UI, Three.js particle effects, and GSAP scroll animations.
 
-## Features
+![Career Pulse](https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200)
 
-- **Public Frontend**
-  - Homepage with hero banner, search, categories, latest posts
-  - Blog listing with filters (category, date, search)
-  - Blog detail page with related posts
+---
 
-- **Admin Panel**
-  - Dashboard with statistics
-  - Post management (Create, Edit, Delete)
-  - Category management
-  - Rich text editor (Summernote)
+## ✨ Features
 
-- **AJAX Features**
-  - Live search
-  - Category filtering
-  - Date sorting
+### Frontend
+- 🏠 **Homepage** - Hero section with animated search, category cards, featured posts
+- 📄 **Blog Listing** - Filter by category, sort by date, AJAX search
+- 📖 **Post Detail** - Rich content view with related posts
+- 🔍 **AJAX Search** - Real-time search with instant results
+- 📱 **Fully Responsive** - Works on all devices
 
-## Tech Stack
+### Admin Panel
+- 📊 **Dashboard** - Overview statistics
+- 📝 **Post Management** - Create, edit, delete posts
+- 🗂️ **Category Management** - Add, edit, delete categories
+- 🔒 **Secure Login** - Admin authentication
 
-- Laravel 12
+### UI/UX
+- 🌙 **Dark Theme** - Midnight blue with cyan accents
+- ✨ **Glassmorphism** - Frosted glass card effects
+- 🎨 **Three.js Particles** - Animated floating particles
+- 📜 **GSAP Animations** - Smooth scroll-triggered animations
+- 💫 **Glow Effects** - Neon cyan gradients and borders
+
+---
+
+## 🛠️ Tech Stack
+
+| Category | Technology |
+|----------|------------|
+| Backend | Laravel 12 (PHP 8.2) |
+| Database | MySQL / SQLite |
+| Frontend | Bootstrap 5, jQuery, AJAX |
+| Rich Text | Summernote Editor |
+| Animations | Three.js, GSAP, CSS3 |
+| Fonts | Sora (Google Fonts) |
+
+---
+
+## 🚀 Setup Steps
+
+### Prerequisites
 - PHP 8.2+
-- MySQL
-- Bootstrap 5
-- jQuery
-- Summernote Editor
-- AJAX
+- Composer
+- Node.js (for npm)
+- MySQL or SQLite
 
-## Installation
+### Installation
 
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd career-pulse
-   ```
+```bash
+# Clone the repository
+git clone https://github.com/Manyaaa-ops/career-pulse.git
+cd career-pulse
 
-2. **Install dependencies**
-   ```bash
-   composer install
-   npm install
-   ```
+# Install dependencies
+composer install
+npm install
 
-3. **Configure environment**
-   ```bash
-   cp .env.example .env
-   ```
+# Copy environment file
+cp .env.example .env
 
-4. **Update .env file**
-   ```
-   DB_CONNECTION=mysql
-   DB_HOST=127.0.0.1
-   DB_PORT=3306
-   DB_DATABASE=career_pulse
-   DB_USERNAME=root
-   DB_PASSWORD=
-   ```
+# Generate application key
+php artisan key:generate
 
-5. **Generate key**
-   ```bash
-   php artisan key:generate
-   ```
+# Configure database in .env
+# For SQLite:
+# DB_CONNECTION=sqlite
+# DB_DATABASE=/full/path/to/database.sqlite
 
-6. **Run migrations**
-   ```bash
-   php artisan migrate
-   ```
+# Run migrations
+php artisan migrate
 
-7. **Seed database**
-   ```bash
-   php artisan db:seed
-   ```
+# Seed sample data
+php artisan db:seed
 
-8. **Build assets**
-   ```bash
-   npm run dev
-   ```
+# Start development server
+php artisan serve
+```
 
-9. **Start server**
-   ```bash
-   php artisan serve
-   ```
-
-## Admin Credentials
-
+### Default Login
+- **URL:** http://127.0.0.1:8000/admin
 - **Email:** admin@careerpulse.com
 - **Password:** password123
 
-## Routes
+---
+
+## 📁 Project Structure
+
+```
+career-pulse/
+├── app/Http/Controllers/    # Controllers
+│   ├── AdminController.php
+│   ├── FrontendController.php
+│   └── PostController.php
+├── app/Models/              # Eloquent Models
+│   ├── Category.php
+│   └── Post.php
+├── database/
+│   ├── migrations/         # Database migrations
+│   ├── seeders/            # Sample data seeders
+│   └── data.sql            # MySQL export
+├── resources/views/
+│   ├── layouts/            # Main & admin layouts
+│   ├── frontend/           # Public pages
+│   └── admin/              # Admin panel
+├── routes/web.php           # Application routes
+└── .env.example            # Environment config
+```
+
+---
+
+## 📄 Available Routes
 
 | Route | Description |
 |-------|-------------|
 | `/` | Homepage |
-| `/posts` | All Posts |
-| `/post/{slug}` | Post Detail |
-| `/admin/login` | Admin Login |
-| `/admin/dashboard` | Admin Dashboard |
-| `/admin/posts` | Manage Posts |
-| `/admin/categories` | Manage Categories |
+| `/posts` | All posts with filters |
+| `/post/{slug}` | Single post detail |
+| `/admin` | Admin dashboard |
+| `/admin/login` | Admin login |
 
-## AJAX Endpoints
+---
 
-| Endpoint | Description |
-|----------|-------------|
-| `/ajax/search?q=` | Search posts |
-| `/ajax/filter?category_id=&date=` | Filter posts |
+## 🌐 Deployment
 
-## Deployment
+### Option 1: InfinityFree
+1. Upload files via FTP (FileZilla)
+2. Create MySQL database in panel
+3. Import `database/data.sql`
+4. Update `.env` with credentials
 
-### On Render
-1. Connect your GitHub repository
-2. Set environment variables
-3. Use build command: `php artisan migrate --force`
-4. Set start command: `php artisan serve`
+### Option 2: Render.com
+1. Connect GitHub repo to Render
+2. Add MySQL database (Render offers free PostgreSQL)
+3. Set environment variables
+4. Deploy automatically
 
-### On InfinityFree
-1. Upload via FileZilla
-2. Import database
-3. Update .env file
+### Option 3: 000webhost
+1. Upload via File Manager
+2. Create database, import SQL
+3. Configure .env file
 
-## Project Structure
+---
 
-```
-career-pulse/
-├── app/
-│   ├── Http/
-│   │   ├── Controllers/
-│   │   └── Middleware/
-│   └── Models/
-├── database/
-│   ├── migrations/
-│   └── seeders/
-├── public/
-│   ├── uploads/
-│   └── css/js assets
-├── resources/
-│   └── views/
-│       ├── admin/
-│       ├── frontend/
-│       └── layouts/
-└── routes/
-    └── web.php
-```
+## 📊 Database Schema
 
-## License
+### Categories Table
+- id, name, slug, timestamps
 
-MIT License
+### Posts Table
+- id, category_id, title, slug, excerpt, content
+- image, author, views, is_featured, status
+- timestamps
+
+---
+
+## 🎨 Color Palette
+
+| Color | Hex | Usage |
+|-------|-----|-------|
+| Midnight | #0c1222 | Background |
+| Dark Blue | #131b2e | Cards |
+| Ocean | #0066cc | Accents |
+| Cyan | #00a8e8 | Primary |
+| Bright Cyan | #00d4ff | Highlights |
+| White | #ffffff | Text |
+
+---
+
+## 📝 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+---
+
+## 👤 Author
+
+**Created by:** Manya Dixit
+
+**GitHub:** https://github.com/Manyaaa-ops/career-pulse
+
+---
+
+## 🙏 Acknowledgments
+
+- [Laravel](https://laravel.com) - PHP framework
+- [Three.js](https://threejs.org) - 3D animations
+- [GSAP](https://greensock.com/gsap/) - Animation platform
+- [Unsplash](https://unsplash.com) - Sample images
