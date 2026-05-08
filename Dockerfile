@@ -22,8 +22,6 @@ RUN cp .env.example .env
 
 RUN composer install --no-dev --optimize-autoloader
 
-RUN php artisan key:generate
-
 RUN php artisan migrate --force
 
 RUN php artisan db:seed --force
