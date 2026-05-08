@@ -12,16 +12,16 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install pdo pdo_mysql pdo_pgsql zip gd
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /app
 
 COPY . .
 
-RUN cp .env.example .env
-
 RUN composer install --no-dev --optimize-autoloader
 
-EXPOSE 8000
+RUN php artisan config:clear
 
-CMD sh -c "php artisan serve --host 0.0.0.0 --port $PORT"
+EXPOSE 10000
+
+CMD php artisan serve --host=0.0.0.0 --port=${PORT:-10000}
